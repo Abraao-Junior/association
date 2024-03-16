@@ -33,4 +33,8 @@ end
       observation: Faker::Lorem.paragraph
     )
   end
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> 34f5e7a (Novas funções)
