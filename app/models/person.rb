@@ -13,21 +13,17 @@ class Person < ApplicationRecord
   # - improve performance using SQL
   # - sum payments
   # - rename to "balance"
-  def total_debts
-    total = 0
 
-    debts.each do |debt|
-      total -= debt.amount
-    end
-
-    total
+  def update_balance
+    new_balance = payments.sum(:amount) - debts.sum(:amount)  
+    update!(balance: new_balance)  
   end
-
+  
   private
 
   def cpf_or_cnpj
     if !CPF.valid?(national_id) && !CNPJ.valid?(national_id)
-      errors.add :national_id, :invalid
+      errors.add(:national_id, :invalid)
     end
   end
 end
