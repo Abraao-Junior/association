@@ -31,6 +31,8 @@ gem 'faker'
 
 gem 'rails_performance'
 
+gem "chartkick"
+
 gem 'will_paginate', '~> 4.0'
 
 # Use Redis adapter to run Action Cable in production
