@@ -16,23 +16,11 @@
 
   <p>
     <strong>Ativo:</strong>
-    <%# TODO: refactor: use a helper method %>
-    <% if @person.active %>
-      <span class="text-success">
-        <i class="bi bi-check-circle"></i>
-      </span>
-    <% else %>
-      <span class="text-danger">
-        <i class="bi bi-x-circle"></i>
-      </span>
-    <% end %>
+    <%= status_icon(person) %>
   </p>
 
   <p>
-    <strong>Total de Débitos</strong>
+    <strong>Total de Débitos:</strong>
     <%= person.balance %>
   </p>
-
 </div>
-
-
