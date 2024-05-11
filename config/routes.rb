@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'dashboard/index'
+  get 'reports/balance'
   resources :payments
   devise_for :users
 
