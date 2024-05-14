@@ -1,7 +1,7 @@
+# app/mailers/person_mailer.rb
 class PersonMailer < ApplicationMailer
-    def balance_report(user)
-      @user = user
-      mail(to: @user.email, subject: 'Seu Relatório de Saldo')
-    end
+  def balance_report(person)
+    @person = person
+    mail(to: @person.email, subject: 'Seu Relatório de Balanço')
   end
-  
+end
