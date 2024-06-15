@@ -9,12 +9,12 @@ puts "Usuário criado:"
 puts "login admin@admin.com"
 puts "111111"
 
-30.times do |counter|
+1000.times do |counter|
   puts "Creating user #{counter}"
   User.create email: Faker::Internet.email, password: '111111'
 end
 
-30.times do |counter|
+100000.times do |counter|
   puts "Inserting Person #{counter}"
 
   attrs = {
@@ -26,20 +26,28 @@ end
   }
   person = Person.create(attrs)
 
-  5.times do |debt_counter|
-    puts "Inserting Debt #{debt_counter}"
-    person.debts.create(
-      amount: Faker::Number.between(from: 1, to: 200),
-      observation: Faker::Lorem.paragraph
-    )
+
+  # 5.times do |debt_counter|
+  #   puts "Inserting Debt #{debt_counter}"
+  #   person.debts.create(
+  #     amount: Faker::Number.between(from: 1, to: 200),
+  #     observation: Faker::Lorem.paragraph
+  #   )
 
   
-    puts "Inserting Paym #{debt_counter}"
-    person.payments.create(
-      amount: Faker::Number.between(from: 1, to: 200),
-      paid_at: Time.at(rand * Time.now.to_i)
-      )
-    
+  #   puts "Inserting Paym #{debt_counter}"
+  #   person.payments.create(
+  #     amount: Faker::Number.between(from: 1, to: 200),
+  #     paid_at: Time.at(rand * Time.now.to_i)
+  #     )
+
   
+  200.times do |counter|
+    puts "Inserting High Value Debt #{counter + 1}"
+    Debt.create(
+      amount: Faker::Number.between(from: 100_000, to: 200_000),
+      person: Person.order('RANDOM()').first,
+      observation: Faker::Lorem.paragraph
+    )
   end
 end

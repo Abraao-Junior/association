@@ -23,7 +23,7 @@
         <table class="table">
           <tr>
             <td><%= @top_person&.name %></td>
-            <td class="text-end"><%= @top_person&.balance %></td>
+            <td class="text-end"><%= number_to_currency(@top_person&.balance) %></td>
           </tr>
         </table>
 
@@ -31,10 +31,9 @@
         <table class="table">
           <tr>
             <td><%= @bottom_person&.name %></td>
-            <td class="text-end"><%= @bottom_person&.balance %></td>
+            <td class="text-end"><%= number_to_currency(@bottom_person&.balance) %></td>
           </tr>
         </table>
-        </div>
       </div>
     </div>
   </div>
@@ -79,6 +78,23 @@
       <div class="card-body">
         <h5 class="card-title">Últimos pagamentos</h5>
         <%= line_chart @last_payments %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Últimos 10 débitos lançados com valor maior do que 100 mil</h5>
+        <ul>
+          <% @recent_high_value_debts.each do |debt| %>
+            <li>
+              <%= debt.person.name %> - <%= number_to_currency(debt.amount) %>
+            </li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>
